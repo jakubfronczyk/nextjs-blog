@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import Posts from "./components/Posts";
 
+export const revalidate = 10;
+
 export default function Home() {
     return (
         <main className="px-6 mx-auto max-w-[1200px]">
