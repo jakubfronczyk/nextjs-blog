@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
-import ProfileImg from "./components/ProfileImg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +22,10 @@ export default function RootLayout({
         >
             <body className="min-h-screen dark:bg-black">
                 <Navbar />
-                <ProfileImg />
-                {children}
+
+                <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+                    {children}
+                </main>
             </body>
         </html>
     );
