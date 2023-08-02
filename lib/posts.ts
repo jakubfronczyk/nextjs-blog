@@ -1,4 +1,7 @@
 import { compileMDX } from "next-mdx-remote/rsc";
+import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
+import rehypeHighlight from "rehype-highlight/lib";
+import rehypeSlug from "rehype-slug";
 
 type Filetree = {
     tree: [
@@ -12,7 +15,7 @@ export async function getPostByName(
     fileName: string
 ): Promise<BlogPost | undefined> {
     const res = await fetch(
-        `https://raw.githubusercontent.com/jakubfronczyk/my-blogposts/main/${fileName}`,
+        `https://raw.githubusercontent.com/jakubfronczyk/my-blogposts/master/${fileName}`,
         {
             headers: {
                 Accept: "application/vnd.github+json",
@@ -34,6 +37,21 @@ export async function getPostByName(
         tags: string[];
     }>({
         source: rawMDX,
+        options: {
+            parseFrontmatter: true,
+            mdxOptions: {
+                rehypePlugins: [
+                    rehypeHighlight,
+                    rehypeSlug,
+                    [
+                        rehypeAutolinkHeadings,
+                        {
+                            behavior: "wrap",
+                        },
+                    ],
+                ],
+            },
+        },
     });
 
     const id = fileName.replace(/\.mdx$/, "");
@@ -53,7 +71,7 @@ export async function getPostByName(
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
     const res = await fetch(
-        `https://api.github.com/repos/jakubfronczyk/my-blogposts/git/trees/main?recursive=1`,
+        `https://api.github.com/repos/jakubfronczyk/my-blogposts/git/trees/master?recursive=1`,
         {
             headers: {
                 Accept: "application/vnd.github+json",
