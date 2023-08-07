@@ -1,3 +1,5 @@
+import CustomImage from "@/app/components/CustomImage";
+import Video from "@/app/components/Video";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
 import rehypeHighlight from "rehype-highlight/lib";
@@ -37,6 +39,10 @@ export async function getPostByName(
         tags: string[];
     }>({
         source: rawMDX,
+        components: {
+            Video,
+            CustomImage,
+        },
         options: {
             parseFrontmatter: true,
             mdxOptions: {

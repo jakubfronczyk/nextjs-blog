@@ -15,6 +15,9 @@ module.exports = {
             },
         },
     },
-    plugins: [require("@tailwindcss/typography")],
-    plugins: [require("@tailwindcss/asoect-ration")],
+    plugins: [
+        require("@tailwindcss/typography"),
+        require("@tailwindcss/aspect-ratio"),
+    ],
+    // plugins: [require("@tailwindcss/aspect-ratio")],
 };

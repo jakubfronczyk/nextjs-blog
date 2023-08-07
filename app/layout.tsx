@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Jakub Fronczyk's blog",
+    title: "Jakub Fronczyk's site",
     description: "Created by Jakub Fronczyk",
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
         >
             <body className="dark:bg-slate-800">
                 <Navbar />
-                <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+                <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto max-w-[800px]">
                     {children}
                 </main>
             </body>
